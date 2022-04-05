@@ -25,7 +25,9 @@ fetch("https://jsonplaceholder.typicode.com/users").then(
               document.getElementById("data").innerHTML = temp
               }
           }
-      )
+      ) .catch((error) => {
+        console.log(error.message);
+    })
   }
 )
 }
