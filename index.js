@@ -1,3 +1,8 @@
+const displayUser = document.getElementById("users");
+
+displayUser.addEventListener("click", allUsers)
+
+function allUsers(){
 fetch("https://jsonplaceholder.typicode.com/users").then(
   response=>{
       response.json().then(
@@ -5,13 +10,17 @@ fetch("https://jsonplaceholder.typicode.com/users").then(
               console.log(data)
               if(data.length > 0) {
                  var temp = ""    
-              data.forEach((u) => {
+              data.forEach((user) => {
                   temp +="<tr>";
-                  temp +="<td>"+u.id+"</td>";
-                  temp +="<td>"+u.name+"</td>";
-                  temp +="<td>"+u.username+"</td>";
-                  temp +="<td>"+u.email+"</td>";
-                  temp +="<td>"+u.address.street+"</td>";
+                  temp +="<td>"+user.id+"</td>";
+                  temp +="<td>"+user.name+"</td>";
+                  temp +="<td>"+user.username+"</td>";
+                  temp +="<td>"+user.email+"</td>";
+                  temp +="<td>"+user.address.street+ ''+ user.address.catchPhrase+"</td>";
+                  temp +="<td>"+user.phone+"</td>";
+                  temp +="<td>"+user.website+"</td>";
+                  temp +="<td>"+user.company.name+"</td>";
+
               });
               document.getElementById("data").innerHTML = temp
               }
@@ -19,3 +28,4 @@ fetch("https://jsonplaceholder.typicode.com/users").then(
       )
   }
 )
+}
